@@ -9,7 +9,6 @@ int main( int argc, char **argv )
     int fd1[2],fd2[2]; //Array en que la función pipe nos devolverá los file descriptors fd[0]: lectura ; fd[1]: escritura 
     pid_t pid1, pid2;
     char buffer1[50], buffer2[50];
-    char jugador1[50],jugador2[50];
     int num1, num2; //Para cuando read devuelva el numero de caracteres que se han leído
 
     pipe(fd1); //Devuelve 0 si no hay error
@@ -73,8 +72,8 @@ int main( int argc, char **argv )
           //printf("\nPadre espera read...\n");
           //printf("Padre lee %d bytes: %s \n", num1, buffer2);
           close(fd2[0]);
-          printf("Padre recibe jugador1: %s \n\n", buffer1);
-          printf("Padre recibe jugador2: %s \n\n", buffer2);
+          //printf("Padre recibe jugador1: %s \n\n", buffer1);
+          //printf("Padre recibe jugador2: %s \n\n", buffer2);
            //sleep(9999999999999999999999999999); 
           //---------ELIMINAR AL PROCESO QUE PERDIÓ
 
