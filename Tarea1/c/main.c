@@ -6,6 +6,8 @@
 
 int main( int argc, char **argv )
 {
+    int salir=0, existe1=0, existe2=0;
+    
     int fd1[2],fd2[2]; //Array en que la función pipe nos devolverá los file descriptors fd[0]: lectura ; fd[1]: escritura 
     pid_t pid1, pid2;
     char buffer1[50], buffer2[50];
