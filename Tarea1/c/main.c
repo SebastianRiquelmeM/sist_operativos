@@ -24,7 +24,15 @@ int main( int argc, char **argv )
     {
       //printf("\nHijo 1\n");
       close(fd1[0]); //Se cierra descriptor de lectura (Hijo va a escribir)
-      write(fd1[1], "tijera", 13);
+      char opc1[1];
+      printf("------------Elección jugador 1-------------\n\n");
+      printf("1-Piedra\n\n");
+      printf("2-papel\n\n");
+      printf("3-Tijera\n\n");
+      printf("Opción: ");
+      scanf("%c", &opc1);
+      printf("\n");
+      write(fd1[1], opc1, 10);
       close(fd1[1]);
       //_exit(0);
     }
@@ -45,7 +53,16 @@ int main( int argc, char **argv )
         if(pid2 == 0){
           //printf("\nHijo 2\n");
           close(fd2[0]); //Se cierra descriptor de lectura (Hijo va a escribir)
-          write(fd2[1], "piedra", 15);
+          
+          char opc2[1];
+          printf("------------Elección jugador 2-------------\n\n");
+          printf("1-Piedra\n\n");
+          printf("2-papel\n\n");
+          printf("3-Tijera\n\n");
+          printf("Opción: ");
+          scanf("%c", &opc2);
+          printf("\n");
+          write(fd2[1], opc2, 10);
           close(fd2[1]);
           //_exit(0);
         }
@@ -59,6 +76,39 @@ int main( int argc, char **argv )
           printf("Padre recibe jugador1: %s \n\n", buffer1);
           printf("Padre recibe jugador2: %s \n\n", buffer2);
            //sleep(9999999999999999999999999999); 
+          //---------ELIMINAR AL PROCESO QUE PERDIÓ
+
+          //printf("Buffer1: %s\n\n", buffer1);//typeof(buffer1)
+          /*
+          1-Piedra
+          2-papel
+          3-Tijera
+          */
+          if(*buffer1 == '1' && *buffer2 == '2'){
+            printf("Perdió el jugador1, pues papel gana a la pieda\n\n");
+          }
+          if(*buffer1 == '1' && *buffer2 == '3'){
+            printf("Perdió el jugador2, pues piedra gana a tijera\n\n");
+          }
+          if(*buffer1 == '2' && *buffer2 == '1'){
+            printf("Perdió el jugador2, pues papel gana a la pieda\n\n");
+          }
+          if(*buffer1 == '2' && *buffer2 == '3'){
+            printf("Perdió el jugador1, pues tijera gana al papel\n\n");
+          }
+          if(*buffer1 == '3' && *buffer2 == '1'){
+            printf("Perdió el jugador1, pues piedra gana a tijera\n\n");
+          }
+          if(*buffer1 == '3' && *buffer2 == '2'){
+            printf("Perdió el jugador2, pues tijera gana al papel\n\n");
+          }
+          if(*buffer1 == *buffer2){
+            printf("Empate\n\n");
+          }
+          
+
+
+          //-------------ELEGIR SI SEGUIR JUGANDO O NO
           int eleccion=0 ;
           printf("¿Desea agregar un nuevo jugador?\n");
           printf("1- Si\n");
@@ -66,7 +116,7 @@ int main( int argc, char **argv )
           printf("Opcion: ");
           scanf("%d", &eleccion);
           //printf("Usted ha elejido: %d \n\n",eleccion);
-          
+
         }
 
     }
