@@ -1,0 +1,16 @@
+1)
+k numeros (asignaturas)
+
+a: duración total del estudio semanal (en horas)
+
+b: día límite de término (0 – 6)
+
+c: hora límite de término (0 – 23)
+
+2)
+
+2 pergaminos (2 archivos txt)
+
+siempre hay un wn escribiendo en un archivo
+
+hay k estudiantes leyendo el otro archivo
