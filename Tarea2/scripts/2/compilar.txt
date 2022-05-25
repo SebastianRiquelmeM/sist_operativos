@@ -1,0 +1,3 @@
+Para correr el main.c usar
+
+docker build -t compilador . && docker run -it compilador
