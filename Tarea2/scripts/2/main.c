@@ -10,7 +10,8 @@ int readercount = 0;
 
 void *reader(void* param)
 {
-    do{
+    sleep(2);
+    for(int i=0; i<2;i++){
         //sleep(1);
         sem_wait(&mutex); 
         readercount++;
@@ -29,13 +30,13 @@ void *reader(void* param)
         sem_post(&mutex);
         printf("EL lector %d se ha ido\n",readercount+1);
         sleep(5);
-    }while(true);
+    }
 
 }
 
 void *writer(void* param)
 {
-    do{
+    for(int i=0; i<2;i++){
         //sleep(1);
         printf("El escritor esta intentando entrar\n");
         sem_wait(&escritor);
@@ -44,7 +45,7 @@ void *writer(void* param)
         sem_post(&escritor);
         printf("El escritor se ha ido\n");
         sleep(2);
-    }while(true);
+    }
 }
 
 int main()
